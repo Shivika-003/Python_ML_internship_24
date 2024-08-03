@@ -1,0 +1,72 @@
+""" write a code to print the following pattern
+    *
+   **
+  ***
+ ****
+*****"""
+
+
+    
+n = 5 
+for i in range(1, n + 1):
+    print(' \n' * (n - i) + '*' * i)
+
+
+
+""" create a program that promotes the user to input two numbers and perform division.
+Handle the Arithematics exception that might occur if the user attempts to divide by zero and potential 
+NumberFormatExceptin that might occur during the conversion.
+IN SUCH CASE ,INFORM THE USER ABOUT THE ERROR AND ASK FOR INPUT AGAIN"""
+def get_number(prompt):
+    while True:
+        try:
+            return float(input(prompt))
+        except ValueError:
+            print("Invalid input.Enter a valid number.")
+
+def divide_numbers():
+    while True:
+        num1 = get_number("Enter the first num: ")
+        num2 = get_number("Enter the second num: ")
+        
+        try:
+            result = num1 / num2
+            print(f"The result of {num1} divided by {num2} is {result}")
+            break
+        except ZeroDivisionError:
+            print("Division by zero is not allowed.Enter the numbers again.")
+
+divide_numbers()
+
+
+""" SPORTS  EQUIPMENT RENTAL SYSTEM POC:
+Create a class equipment that stores 
+EID, ENAME, BRAND TOTAL, AVAL QTY
+Add Equipment to stock 
+Delete Equipment from stock 
+Update the quantity
+Print the list of available equipment
+Create a new dictionary that stores the record of students who take the sports equipment and name is a
+rental.Dictionary contains:Name , rollno,Eid, Ename,status, return condition
+create two functions as rent item and return item
+Rent item = this function will generate the new record to the dictionary rental
+and fill all the details and mark the condition as good and status as Rented
+Return item = this function will mark the status as returned if student if student return the item and also mention the condition as (good or damaged)."""
+
+class Equipment:
+    def __init__(self):
+        self.equipment_stock = {}
+        self.rental = {}
+        
+    def add_equipment(self, eid, ename, brand, total_qty, avail_qty):
+        if eid in self.equipment_stock:
+            print(f"Equipment with EID {eid} already exists.")
+        else:
+            self.equipment_stock[eid] = {
+                "ENAME": ename,
+                "BRAND": brand,
+                "TOTAL": total_qty,
+                "AVAIL_QTY": avail_qty
+            }
+            print(f"Equipment {ename} added to stock.")
+    
